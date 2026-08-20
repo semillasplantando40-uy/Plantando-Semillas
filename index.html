@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantando Semillas | Alimentamos el cuerpo, sembramos esperanza</title>
+<meta name="description" content="Plantando Semillas brinda más de 180 platos de comida semanales y comparte el evangelio en Coppola y Cerrito. Sumate donando alimentos, ropa o tu tiempo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul: #003851;
+    --azul-claro: #0b5c82;
+    --crema: #F5F2EA;
+    --crema-oscuro: #EAE3D1;
+    --oro: #B8873B;
+    --oro-oscuro: #8f6726;
+    --salvia: #5F7F5E;
+    --texto: #1C2B2E;
+    --blanco: #FFFFFF;
+    --sombra: 0 10px 30px rgba(0,56,81,0.12);
+    --radio: 18px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Karla', 'Segoe UI', sans-serif;
+  }
+/* --- Estilos del Logo del Menú de Navegación --- */
+.logo-imagen {
+  width: 42px;         /* Tamaño compacto ideal para barras de navegación */
+  height: 42px;        /* Mantiene la proporción cuadrada */
+  object-fit: cover;   /* Evita que se distorsione o se estire */
+  border-radius: 50%;  /* Lo hace completamente circular */
+}
+
+/* --- Estilos del Logo de la Sección Hero --- */
+.hero-marca-grande .aro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;    /* Asegura que nada se salga del aro decorativo */
+}
+
+.logo-hero {
+  width: 100%;         /* Se expande para llenar todo el ancho disponible del aro */
+  height: 100%;        /* Se expande para llenar todo el alto disponible del aro */
+  object-fit: cover;   /* Se adapta correctamente sin perder sus proporciones */
+  border-radius: 50%;  /* Corta tu imagen jpg de forma circular */
+}
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:var(--font-body);
+    background:var(--crema);
+    color:var(--texto);
+    font-size:18px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img,svg{display:block;max-width:100%;}
+
+  a{color:inherit;}
+
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;color:var(--azul);line-height:1.15;}
+
+  .contenedor{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  section{scroll-margin-top:92px;}
+
+  /* ---------- barra de semillas (divisor) ---------- */
+  .divisor-semillas{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:46px 0 10px;
+  }
+  .divisor-semillas span{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--oro);
+  }
+  .divisor-semillas span:nth-child(3){
+    width:11px;height:11px;
+    background:var(--salvia);
+  }
+  .divisor-semillas::before,
+  .divisor-semillas::after{
+    content:"";
+    height:1px;width:64px;
+    background:linear-gradient(90deg, transparent, rgba(0,56,81,0.28));
+  }
+  .divisor-semillas::after{
+    background:linear-gradient(90deg, rgba(0,56,81,0.28), transparent);
+  }
+
+  /* ---------- encabezado / nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(245,242,234,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(0,56,81,0.12);
+  }
+  .nav-envoltura{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+    max-width:1120px;
+    margin:0 auto;
+  }
+  .marca{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+  }
+  .marca svg{width:42px;height:42px;flex-shrink:0;}
+  .marca-texto{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.28rem;
+    color:var(--azul);
+    letter-spacing:0.2px;
+  }
+  .marca-texto small{
+    display:block;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:0.62rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--oro-oscuro);
+  }
+
+  nav.enlaces{
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+  nav.enlaces a{
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.98rem;
+    color:var(--azul);
+    position:relative;
+    padding:6px 2px;
+  }
+  nav.enlaces a::after{
+    content:"";
+    position:absolute;
+    left:0;bottom:0;
+    width:0%;height:2px;
+    background:var(--oro);
+    transition:width .25s ease;
+  }
+  nav.enlaces a:hover::after{width:100%;}
+
+  .boton-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--oro);
+    color:var(--blanco);
+    font-weight:700;
+    padding:13px 24px;
+    border-radius:100px;
+    text-decoration:none;
+    font-size:0.98rem;
+    box-shadow:0 8px 18px rgba(184,135,59,0.35);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    white-space:nowrap;
+    border:none;
+    cursor:pointer;
+  }
+  .boton-cta:hover{
+    background:var(--oro-oscuro);
+    transform:translateY(-2px);
+    box-shadow:0 12px 22px rgba(184,135,59,0.42);
+  }
+  .boton-cta svg{width:19px;height:19px;flex-shrink:0;}
+
+  .boton-fantasma{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:transparent;
+    color:var(--azul);
+    font-weight:700;
+    padding:12px 22px;
+    border-radius:100px;
+    border:2px solid var(--azul);
+    text-decoration:none;
+    font-size:0.98rem;
+    transition:background .2s ease, color .2s ease;
+  }
+  .boton-fantasma:hover{background:var(--azul);color:var(--blanco);}
+
+  .btn-menu{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:8px;
+  }
+  .btn-menu span{
+    width:26px;height:3px;background:var(--azul);border-radius:2px;
+    transition:all .25s ease;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:88px 0 60px;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(184,135,59,0.14) 0, transparent 45%),
+      radial-gradient(circle at 88% 82%, rgba(95,127,94,0.14) 0, transparent 45%),
+      var(--crema);
+    overflow:hidden;
+  }
+  .hero-envoltura{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-size:0.78rem;
+    color:var(--oro-oscuro);
+    background:rgba(184,135,59,0.12);
+    padding:8px 16px;
+    border-radius:100px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4rem);
+    margin-bottom:20px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--oro-oscuro);
+  }
+  .hero p.sub{
+    font-size:1.2rem;
+    color:var(--texto);
+    max-width:520px;
+    margin-bottom:14px;
+  }
+  .hero p.sub.destacada{
+    font-family:var(--font-display);
+    font-style:italic;
+    color:var(--azul);
+    font-size:1.3rem;
+    margin-bottom:32px;
+  }
+  .hero-botones{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .hero-stats{
+    display:flex;
+    gap:36px;
+    margin-top:44px;
+    flex-wrap:wrap;
+  }
+  .hero-stats div strong{
+    display:block;
+    font-family:var(--font-display);
+    font-size:2.2rem;
+    color:var(--azul);
+    line-height:1;
+  }
+  .hero-stats div span{
+    font-size:0.88rem;
+    color:var(--texto);
+    opacity:0.75;
+  }
+
+  .hero-marca-grande{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-marca-grande .aro{
+    position:relative;
+    width:100%;
+    max-width:380px;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    background:linear-gradient(155deg, var(--azul), var(--azul-claro));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 30px 60px rgba(0,56,81,0.28);
+  }
+  .hero-marca-grande .aro::before{
+    content:"";
+    position:absolute;
+    inset:-14px;
+    border-radius:50%;
+    border:2px dashed rgba(184,135,59,0.45);
+  }
+  .hero-marca-grande svg{width:56%;height:56%;}
+
+  /* ---------- carrusel ---------- */
+  .carrusel-seccion{
+    padding:20px 0 70px;
+  }
+  .carrusel{
+    position:relative;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:var(--sombra);
+    background:var(--azul);
+  }
+  .carrusel-pista{
+    display:flex;
+    transition:transform .6s cubic-bezier(.65,0,.35,1);
+  }
+  .slide{
+    min-width:100%;
+    position:relative;
+    aspect-ratio:16/8;
+    display:flex;
+    align-items:flex-end;
+    padding:38px 44px;
+  }
+  .slide .fondo-ilustrado{
+    position:absolute;inset:0;
+  }
+  .slide .capa-oscura{
+    position:absolute;inset:0;
+    background:linear-gradient(0deg, rgba(0,20,29,0.78) 0%, rgba(0,20,29,0.1) 55%, rgba(0,20,29,0.25) 100%);
+  }
+  .slide-contenido{
+    position:relative;
+    color:var(--blanco);
+    max-width:560px;
+  }
+  .slide-contenido .num{
+    font-family:var(--font-display);
+    font-size:0.85rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#E9C77C;
+    margin-bottom:8px;
+    display:block;
+  }
+  .slide-contenido h3{
+    color:var(--blanco);
+    font-size:1.7rem;
+    margin-bottom:8px;
+  }
+  .slide-contenido p{
+    font-size:1rem;
+    opacity:0.92;
+  }
+
+  .carrusel-controles{
+    position:absolute;
+    bottom:20px;
+    right:24px;
+    display:flex;
+    gap:10px;
+    z-index:5;
+  }
+  .carrusel-flecha{
+    width:44px;height:44px;
+    border-radius:50%;
+    border:1.5px solid rgba(255,255,255,0.6);
+    background:rgba(0,20,29,0.35);
+    color:var(--blanco);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:background .2s ease;
+  }
+  .carrusel-flecha:hover{background:rgba(0,20,29,0.6);}
+  .carrusel-flecha svg{width:20px;height:20px;}
+
+  .carrusel-puntos{
+    position:absolute;
+    bottom:22px;
+    left:44px;
+    display:flex;
+    gap:9px;
+    z-index:5;
+  }
+  .punto{
+    width:10px;height:10px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.45);
+    border:none;
+    cursor:pointer;
+    padding:0;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .punto.activo{background:#E9C77C;transform:scale(1.2);}
+
+  .nota-fotos{
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--texto);
+    opacity:0.6;
+    margin-top:14px;
+  }
+
+  /* ---------- secciones generales ---------- */
+  .seccion{
+    padding:78px 0;
+  }
+  .seccion.alterna{
+    background:var(--crema-oscuro);
+  }
+  .encabezado-seccion{
+    text-align:center;
+    max-width:680px;
+    margin:0 auto 52px;
+  }
+  .encabezado-seccion .eyebrow{
+    display:block;
+    font-weight:700;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    font-size:0.8rem;
+    color:var(--salvia);
+    margin-bottom:12px;
+  }
+  .encabezado-seccion h2{
+    font-size:clamp(1.9rem, 3.4vw, 2.6rem);
+  }
+  .encabezado-seccion p{
+    margin-top:14px;
+    font-size:1.08rem;
+    opacity:0.85;
+  }
+
+  /* historia */
+  .historia-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .historia-grid p{
+    margin-bottom:18px;
+    font-size:1.08rem;
+  }
+  .cita-versiculo{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--azul);
+    border-left:4px solid var(--oro);
+    padding:6px 0 6px 22px;
+    margin:26px 0;
+  }
+  .tarjetas-stats{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    position:sticky;
+    top:110px;
+  }
+  .stat-tarjeta{
+    background:var(--blanco);
+    border-radius:var(--radio);
+    padding:26px 28px;
+    box-shadow:var(--sombra);
+    border:1px solid rgba(0,56,81,0.06);
+  }
+  .stat-tarjeta strong{
+    display:block;
+    font-family:var(--font-display);
+    font-size:2.4rem;
+    color:var(--oro-oscuro);
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .stat-tarjeta span{font-size:0.98rem;opacity:0.8;}
+
+  /* jornadas especiales */
+  .jornadas-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .jornada-tarjeta{
+    background:var(--blanco);
+    border-radius:var(--radio);
+    padding:34px 28px;
+    text-align:left;
+    box-shadow:var(--sombra);
+    transition:transform .25s ease;
+  }
+  .jornada-tarjeta:hover{transform:translateY(-6px);}
+  .jornada-icono{
+    width:56px;height:56px;
+    border-radius:50%;
+    background:rgba(0,56,81,0.08);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .jornada-icono svg{width:28px;height:28px;color:var(--azul);}
+  .jornada-tarjeta h3{font-size:1.2rem;margin-bottom:8px;}
+  .jornada-tarjeta p{font-size:0.98rem;opacity:0.85;}
+
+  /* cronograma */
+  .cronograma-panel{
+    background:linear-gradient(155deg, var(--azul), var(--azul-claro));
+    border-radius:28px;
+    padding:56px;
+    color:var(--blanco);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+    box-shadow:var(--sombra);
+    position:relative;
+    overflow:hidden;
+  }
+  .cronograma-panel::before{
+    content:"";
+    position:absolute;
+    width:340px;height:340px;
+    border-radius:50%;
+    border:2px dashed rgba(233,199,124,0.3);
+    right:-90px;top:-90px;
+  }
+  .cronograma-dias{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin:22px 0 26px;
+  }
+  .dia-pill{
+    background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.3);
+    padding:10px 20px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:0.95rem;
+  }
+  .cronograma-panel h2{color:var(--blanco);}
+  .cronograma-detalle{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    font-size:1.05rem;
+    margin-bottom:14px;
+  }
+  .cronograma-detalle svg{width:24px;height:24px;flex-shrink:0;margin-top:2px;color:#E9C77C;}
+  .cronograma-hora{
+    font-family:var(--font-display);
+    font-size:3.4rem;
+    color:#E9C77C;
+    line-height:1;
+  }
+  .cronograma-hora span{
+    display:block;
+    font-family:var(--font-body);
+    font-size:1rem;
+    color:var(--blanco);
+    opacity:0.85;
+    margin-top:8px;
+  }
+
+  /* desafio y vision */
+  .desafio-envoltura{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .desafio-caja{
+    background:var(--blanco);
+    border-radius:var(--radio);
+    padding:32px;
+    box-shadow:var(--sombra);
+    border-left:5px solid var(--oro);
+  }
+  .desafio-caja p{margin-bottom:0;}
+  .barra-meta{
+    margin-top:34px;
+  }
+  .barra-meta .etiquetas{
+    display:flex;
+    justify-content:space-between;
+    font-size:0.92rem;
+    font-weight:700;
+    color:var(--azul);
+    margin-bottom:8px;
+  }
+  .barra-fondo{
+    background:rgba(0,56,81,0.1);
+    height:14px;
+    border-radius:100px;
+    overflow:hidden;
+  }
+  .barra-relleno{
+    height:100%;
+    width:60%;
+    border-radius:100px;
+    background:linear-gradient(90deg, var(--oro), #E9C77C);
+  }
+
+  /* como sumarte */
+  .necesidades-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:56px;
+  }
+  .necesidad-tarjeta{
+    background:var(--blanco);
+    border-radius:16px;
+    padding:26px 22px;
+    box-shadow:0 6px 18px rgba(0,56,81,0.08);
+    border:1px solid rgba(0,56,81,0.06);
+  }
+  .necesidad-tarjeta .jornada-icono{width:46px;height:46px;margin-bottom:14px;background:rgba(184,135,59,0.12);}
+  .necesidad-tarjeta .jornada-icono svg{width:22px;height:22px;color:var(--oro-oscuro);}
+  .necesidad-tarjeta h4{
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    color:var(--azul);
+    margin-bottom:6px;
+  }
+  .necesidad-tarjeta p{font-size:0.92rem;opacity:0.82;}
+
+  .caja-cuenta{
+    background:var(--azul);
+    color:var(--blanco);
+    border-radius:24px;
+    padding:44px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:30px;
+    align-items:center;
+    box-shadow:var(--sombra);
+  }
+  .caja-cuenta h3{color:var(--blanco);font-size:1.5rem;margin-bottom:6px;}
+  .caja-cuenta p{opacity:0.82;font-size:0.98rem;margin-bottom:0;}
+  .datos-cuenta{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.22);
+    border-radius:16px;
+    padding:24px 28px;
+    min-width:300px;
+  }
+  .datos-cuenta div{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    font-size:0.98rem;
+  }
+  .datos-cuenta div:last-child{border-bottom:none;}
+  .datos-cuenta span.etiqueta{opacity:0.7;}
+  .datos-cuenta span.valor{font-weight:700;text-align:right;}
+
+  /* contacto */
+  .contacto-envoltura{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .contacto-lista{list-style:none;margin-top:26px;}
+  .contacto-lista li{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(0,56,81,0.1);
+    font-size:1.08rem;
+  }
+  .contacto-lista li svg{width:24px;height:24px;color:var(--oro-oscuro);flex-shrink:0;}
+  .aviso{
+    margin-top:26px;
+    background:rgba(95,127,94,0.1);
+    border-left:4px solid var(--salvia);
+    padding:18px 22px;
+    border-radius:0 12px 12px 0;
+    font-size:0.96rem;
+  }
+  .contacto-tarjeta-cta{
+    background:linear-gradient(155deg, var(--azul), var(--azul-claro));
+    border-radius:28px;
+    padding:50px;
+    color:var(--blanco);
+    text-align:center;
+  }
+  .contacto-tarjeta-cta h3{color:var(--blanco);font-size:1.7rem;margin-bottom:14px;}
+  .contacto-tarjeta-cta p{opacity:0.88;margin-bottom:28px;}
+
+  /* zona de evidencia (galeria) */
+  .evidencia-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-bottom:36px;
+  }
+  .evidencia-item{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--crema-oscuro);
+    box-shadow:0 4px 14px rgba(0,56,81,0.1);
+  }
+  .evidencia-item img,
+  .evidencia-item video{
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .evidencia-item.oculto{display:none;}
+  .evidencia-item .marca-video{
+    position:absolute;
+    top:10px;right:10px;
+    width:30px;height:30px;
+    border-radius:50%;
+    background:rgba(0,20,29,0.55);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .evidencia-item .marca-video svg{width:14px;height:14px;color:#fff;}
+  .evidencia-item.marcador{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:8px;
+    color:var(--azul);
+    opacity:0.45;
+    border:2px dashed rgba(0,56,81,0.25);
+    background:transparent;
+  }
+  .evidencia-item.marcador svg{width:30px;height:30px;}
+  .evidencia-item.marcador span{font-size:0.8rem;font-weight:700;text-align:center;padding:0 8px;}
+  .evidencia-boton-envoltura{text-align:center;}
+
+  @media (max-width:980px){
+    .evidencia-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  @media (max-width:720px){
+    .evidencia-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  }
+
+  /* redes sociales */
+  .redes-seccion{
+    padding:70px 0;
+    text-align:center;
+  }
+  .redes-seccion .encabezado-seccion{margin-bottom:38px;}
+  .redes-iconos{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  .red-boton{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--blanco);
+    border:1px solid rgba(0,56,81,0.1);
+    box-shadow:var(--sombra);
+    padding:16px 26px;
+    border-radius:100px;
+    text-decoration:none;
+    font-weight:700;
+    color:var(--azul);
+    transition:transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .red-boton:hover{
+    background:var(--azul);
+    color:var(--blanco);
+    transform:translateY(-3px);
+  }
+  .red-boton .red-icono{
+    width:38px;height:38px;
+    border-radius:50%;
+    background:rgba(184,135,59,0.14);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .red-boton:hover .red-icono{background:rgba(233,199,124,0.22);}
+  .red-boton svg{width:20px;height:20px;color:var(--oro-oscuro);}
+  .red-boton:hover svg{color:#E9C77C;}
+
+  /* pie de pagina */
+  footer{
+    background:var(--azul);
+    color:rgba(255,255,255,0.85);
+    padding:50px 0 26px;
+  }
+  .pie-envoltura{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:30px;
+    flex-wrap:wrap;
+    padding-bottom:30px;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+  }
+  .pie-marca{display:flex;align-items:center;gap:12px;}
+  .pie-marca svg{width:38px;height:38px;}
+  .pie-marca .marca-texto{color:var(--blanco);}
+  .pie-marca .marca-texto small{color:#E9C77C;}
+  .pie-versiculo{
+    max-width:420px;
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.02rem;
+    opacity:0.9;
+    text-align:right;
+  }
+  .pie-final{
+    text-align:center;
+    font-size:0.85rem;
+    opacity:0.6;
+    margin-top:24px;
+  }
+
+  /* revelado al hacer scroll */
+  .revelar{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .revelar.visible{opacity:1;transform:translateY(0);}
+
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--oro);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-envoltura{grid-template-columns:1fr;}
+    .hero-marca-grande{order:-1;max-width:220px;margin:0 auto 20px;}
+    .historia-grid{grid-template-columns:1fr;}
+    .tarjetas-stats{position:static;flex-direction:row;flex-wrap:wrap;}
+    .stat-tarjeta{flex:1;min-width:150px;}
+    .jornadas-grid{grid-template-columns:1fr 1fr;}
+    .necesidades-grid{grid-template-columns:1fr 1fr;}
+    .desafio-envoltura{grid-template-columns:1fr;}
+    .cronograma-panel{grid-template-columns:1fr;padding:40px;}
+    .caja-cuenta{grid-template-columns:1fr;}
+    .datos-cuenta{min-width:0;}
+    .contacto-envoltura{grid-template-columns:1fr;}
+    .pie-versiculo{text-align:left;}
+  }
+
+  @media (max-width:720px){
+    nav.enlaces{
+      position:fixed;
+      top:73px;left:0;right:0;
+      background:var(--crema);
+      flex-direction:column;
+      align-items:stretch;
+      gap:0;
+      padding:10px 24px 20px;
+      border-bottom:1px solid rgba(0,56,81,0.12);
+      transform:translateY(-130%);
+      transition:transform .3s ease;
+      max-height:calc(100vh - 73px);
+      overflow-y:auto;
+    }
+    nav.enlaces.abierta{transform:translateY(0);}
+    nav.enlaces a{padding:14px 0;border-bottom:1px solid rgba(0,56,81,0.08);}
+    nav.enlaces .boton-cta{margin-top:14px;justify-content:center;}
+    .btn-menu{display:flex;}
+    .jornadas-grid{grid-template-columns:1fr;}
+    .necesidades-grid{grid-template-columns:1fr;}
+    .hero{padding:44px 0 40px;}
+    body{font-size:16.5px;}
+    .cronograma-hora{font-size:2.6rem;}
+    .caja-cuenta,.cronograma-panel{padding:30px;}
+    .contacto-tarjeta-cta{padding:34px;}
+    .slide{align-items:flex-end;padding:26px 22px;}
+    .slide-contenido h3{font-size:1.3rem;}
+    .carrusel-puntos{left:22px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= LOGO / MARCA SVG (reutilizado) ================= -->
+<template id="marca-svg">
+  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18 32c0-7 5-12 11-12 5 0 8 4 8 4s3-4 8-4c6 0 11 5 11 12s-5 12-11 12c-5 0-8-4-8-4s-3 4-8 4c-6 0-11-5-11-12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M32 24v16M25 32h14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+  </svg>
+</template>
+
+<header>
+  <div class="nav-envoltura">
+    <a href="#inicio" class="marca">
+      <!-- 1. CAMBIO: Tu logo en el menú -->
+      <img src="logo.jpeg" alt="Plantando Semillas" class="logo-imagen">
+      <span class="marca-texto">Plantando Semillas<small>Comunidad &amp; esperanza</small></span>
+    </a>
+
+    <nav class="enlaces" id="navEnlaces">
+      <a href="#historia">Nuestra historia</a>
+      <a href="#jornadas">Jornadas especiales</a>
+      <a href="#evidencia">Evidencia</a>
+      <a href="#cronograma">Cronograma</a>
+      <a href="#vision">Visión</a>
+      <a href="#sumarte">Cómo sumarte</a>
+      <a href="#contacto">Contacto</a>
+      <a href="https://wa.me/59896639880" class="boton-cta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.1-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73 0-1.3.68-1.93.93-2.2.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.15-.28.34-.4.46-.13.13-.27.27-.12.53.16.26.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.18 1.36.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.16 1.25z"/></svg>
+        WhatsApp
+      </a>
+    </nav>
+
+    <button class="btn-menu" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="contenedor hero-envoltura">
+    <div>
+      <span class="hero-eyebrow">Coppola &amp; Cerrito · Todas las denominaciones bienvenidas</span>
+      <h1>Alimentamos el <em>cuerpo</em>, sembramos <em>esperanza</em> en el corazón.</h1>
+      <p class="sub">Brindamos más de 180 platos de comida semanales a personas que están saliendo adelante, y en cada encuentro compartimos también una palabra de fe.</p>
+      <p class="sub destacada">"Llevamos alimento al cuerpo y el evangelio al corazón."</p>
+      <div class="hero-botones">
+        <a href="https://wa.me/59896639880" class="boton-cta" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.1-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73 0-1.3.68-1.93.93-2.2.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.15-.28.34-.4.46-.13.13-.27.27-.12.53.16.26.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.18 1.36.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.16 1.25z"/></svg>
+          Escríbenos por WhatsApp
+        </a>
+        <a href="#sumarte" class="boton-fantasma">Quiero sumarme</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>180+</strong><span>platos entregados por semana</span></div>
+        <div><strong>10</strong><span>hermanos de distintas congregaciones</span></div>
+        <div><strong>3</strong><span>jornadas semanales en la calle</span></div>
+      </div>
+    </div>
+    <div class="hero-marca-grande">
+      <!-- 2. CAMBIO: Se remueve el CSS inline y se inserta tu logo dentro del aro -->
+      <div class="aro">
+        <img src="logo.jpeg" alt="Logo de la comunidad" class="logo-hero">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= CARRUSEL DE FOTOS ================= -->
+<section class="carrusel-seccion">
+  <div class="contenedor">
+    <div class="carrusel" id="carrusel">
+      <div class="carrusel-pista" id="pista">
+
+        <div class="slide" style="background:linear-gradient(135deg,#0b5c82,#003851)">
+          <div class="capa-oscura"></div>
+          <div class="slide-contenido">
+            <span class="num">01 · En la calle</span>
+            <h3>Un plato caliente, entregado con las manos</h3>
+            <p>Tres veces por semana salimos a la Plaza de General Flores y Carreras Nacionales a compartir la cena.</p>
+          </div>
+        </div>
+
+        <div class="slide" style="background:linear-gradient(135deg,#8f6726,#B8873B)">
+          <div class="capa-oscura"></div>
+          <div class="slide-contenido">
+            <span class="num">02 · Palabra y comunidad</span>
+            <h3>Alimento para el cuerpo, palabra para el alma</h3>
+            <p>En cada encuentro compartimos una palabra de esperanza y de fe junto al plato de comida.</p>
+          </div>
+        </div>
+
+        <div class="slide" style="background:linear-gradient(135deg,#5F7F5E,#3f5c3f)">
+          <div class="capa-oscura"></div>
+          <div class="slide-contenido">
+            <span class="num">03 · Jornadas especiales</span>
+            <h3>Cortes de pelo y ropa de abrigo</h3>
+            <p>En nuestros eventos especiales sumamos peluqueros voluntarios y una mesa de ropa para elegir.</p>
+          </div>
+        </div>
+
+        <div class="slide" style="background:linear-gradient(135deg,#003851,#5F7F5E)">
+          <div class="capa-oscura"></div>
+          <div class="slide-contenido">
+            <span class="num">04 · Diez congregaciones, un propósito</span>
+            <h3>Distintas iglesias, un mismo Reino</h3>
+            <p>Sin importar denominación, bandera o paredes, nos unimos para servir juntos cada semana.</p>
+          </div>
+        </div>
+
+        <div class="slide" style="background:linear-gradient(135deg,#B8873B,#003851)">
+          <div class="capa-oscura"></div>
+          <div class="slide-contenido">
+            <span class="num">05 · El sueño que viene</span>
+            <h3>Camino a los 300 platos semanales</h3>
+            <p>Soñamos con un espacio propio para cocinar, guardar donaciones y recibir a más personas.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="carrusel-puntos" id="puntos"></div>
+      <div class="carrusel-controles">
+        <button class="carrusel-flecha" id="btnAnterior" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carrusel-flecha" id="btnSiguiente" aria-label="Foto siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+    <p class="nota-fotos">Estas escenas son ilustrativas — reemplazalas por fotos reales de las jornadas cuando las tengas.</p>
+  </div>
+</section>
+
+<div class="divisor-semillas"><span></span><span></span><span></span></div>
+
+<!-- ================= HISTORIA ================= -->
+<section class="seccion revelar" id="historia">
+  <div class="contenedor">
+    <div class="encabezado-seccion" style="margin-bottom:44px;">
+      <span class="eyebrow">De dónde venimos</span>
+      <h2>Nuestra historia y nuestro presente</h2>
+    </div>
+    <div class="historia-grid">
+      <div>
+        <p>"Plantando Semillas" comenzó en el corazón de una familia, planeado alrededor de una mesa en nuestro hogar. Todo inició con unas tortas horneadas y un café caliente. Yo, Damián, junto a mi esposa María y a nuestro hijo Allan, decidimos salir caminando por las calles de Coppola y Cerrito para compartir lo poco que teníamos.</p>
+        <p>Pero no solo compartíamos lo material. En cada encuentro también compartíamos una palabra de esperanza y de fe, porque sabemos que el alma también necesita ser alimentada.</p>
+        <p>Dios fue abriendo puertas. Al cabo de 3 meses, Dios abrió la puerta de un refugio y pudimos empezar a entregar un plato de comida caliente y sólido. Ahí acompañamos a personas que, por diferentes situaciones, no tienen hogar y están tratando de salir adelante.</p>
+        <p>Hoy, gracias a una iglesia hermana que nos dona aproximadamente 60 platos por jornada y otra que nos bendice con ropa y otras cosas, somos 10 hermanos de diferentes congregaciones que salimos 3 veces por semana. Cuando nos toca cocinar a nosotros, hemos podido servir entre 100 y 110 platos en una jornada. Nuestro anhelo es poder llegar a los 300 platos semanales.</p>
+        <div class="cita-versiculo">Creemos que esto tan lindo que Dios viene haciendo demuestra que, sin importar la denominación, bandera o paredes, podemos unirnos para un Gran Propósito: trabajar todos juntos por un solo Reino.</div>
+      </div>
+      <div class="tarjetas-stats">
+        <div class="stat-tarjeta"><strong>3 meses</strong><span>tardó en abrirse la puerta del primer refugio</span></div>
+        <div class="stat-tarjeta"><strong>~60</strong><span>platos donados por jornada por una iglesia hermana</span></div>
+        <div class="stat-tarjeta"><strong>100–110</strong><span>platos servidos cuando cocinamos nosotros</span></div>
+        <div class="stat-tarjeta"><strong>300</strong><span>platos semanales: nuestra meta</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divisor-semillas"><span></span><span></span><span></span></div>
+
+<!-- ================= JORNADAS ESPECIALES ================= -->
+<section class="seccion alterna revelar" id="jornadas">
+  <div class="contenedor">
+    <div class="encabezado-seccion">
+      <span class="eyebrow">Más que un plato de comida</span>
+      <h2>Jornadas especiales</h2>
+      <p>Además de nuestras salidas semanales, realizamos eventos especiales en la calle donde llevamos más que comida.</p>
+    </div>
+    <div class="jornadas-grid">
+      <div class="jornada-tarjeta">
+        <div class="jornada-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M6 3c0 4 4 4 4 8s-4 4-4 8M18 3v18M14 8h8"/></svg>
+        </div>
+        <h3>Cortes de pelo</h3>
+        <p>Contamos con peluqueros voluntarios que cortan el pelo de manera gratuita durante la jornada.</p>
+      </div>
+      <div class="jornada-tarjeta">
+        <div class="jornada-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l4-4h8l4 4-3 3v9H7v-9L4 8z"/></svg>
+        </div>
+        <h3>Mesa de ropa</h3>
+        <p>Ponemos a disposición ropa y abrigo para que cada persona pueda elegir lo que necesita.</p>
+      </div>
+      <div class="jornada-tarjeta">
+        <div class="jornada-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a2 2 0 1 0-4 0M6 21h12M8 21V11a4 4 0 0 1 8 0v10"/></svg>
+        </div>
+        <h3>Comida en el lugar</h3>
+        <p>Cocinamos allí mismo para compartir un momento diferente, cálido y en comunidad.</p>
+      </div>
+    </div>
+    <div class="cita-versiculo" style="max-width:720px;margin:44px auto 0;">
+      "Y este es el gran mandamiento: Amarás al Señor tu Dios con todo tu corazón... y a tu prójimo como a ti mismo." — Mateo 22:36-39
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVIDENCIA (GALERIA) ================= -->
+<section class="seccion alterna revelar" id="evidencia">
+  <div class="contenedor">
+    <div class="encabezado-seccion">
+      <span class="eyebrow">Lo que Dios va haciendo</span>
+      <h2>Zona de evidencia</h2>
+      <p>Fotos y videos reales de nuestras jornadas en la calle.</p>
+    </div>
+
+    <div class="evidencia-grid" id="evidenciaGrid">
+      <!-- Reemplazá cada .evidencia-item.marcador por tu foto o video real (ver instrucciones en el código) -->
+      <div class="evidencia-item marcador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 1</span></div>
+      <div class="evidencia-item marcador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 2</span></div>
+      <div class="evidencia-item marcador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 3</span></div>
+      <div class="evidencia-item marcador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Video 1</span></div>
+      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 4</span></div>
+      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 5</span></div>
+      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 6</span></div>
+      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Video 2</span></div>
+      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 7</span></div>
+      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 8</span></div>
+    </div>
+
+    <div class="evidencia-boton-envoltura">
+      <button class="boton-fantasma" id="btnCargarMas">Cargar más fotos y videos</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CRONOGRAMA ================= -->
+<section class="seccion revelar" id="cronograma">
+  <div class="contenedor">
+    <div class="cronograma-panel">
+      <div>
+        <span class="hero-eyebrow" style="background:rgba(233,199,124,0.18);color:#E9C77C;">Nos encuentra cada semana</span>
+        <h2>Cronograma</h2>
+        <div class="cronograma-dias">
+          <span class="dia-pill">Lunes</span>
+          <span class="dia-pill">Miércoles</span>
+          <span class="dia-pill">Viernes</span>
+        </div>
+        <div class="cronograma-detalle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span>19:00 hrs, puntual</span>
+        </div>
+        <div class="cronograma-detalle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span>Plaza de General Flores y Carreras Nacionales</span>
+        </div>
+        <p style="opacity:0.85;margin-top:18px;">Acérquese a compartir un plato caliente y una palabra de aliento. Todos son bienvenidos.</p>
+      </div>
+      <div style="text-align:center;">
+        <div class="cronograma-hora">19:00<span>horas, tres veces por semana</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divisor-semillas"><span></span><span></span><span></span></div>
+
+<!-- ================= DESAFIO Y VISION ================= -->
+<section class="seccion alterna revelar" id="vision">
+  <div class="contenedor">
+    <div class="encabezado-seccion">
+      <span class="eyebrow">Mirando hacia adelante</span>
+      <h2>Nuestro desafío y visión a futuro</h2>
+    </div>
+    <div class="desafio-envoltura">
+      <div class="desafio-caja">
+        <p>La provisión que recibimos hoy está confirmada hasta el mes de agosto. No queremos detenernos: Dios nos ha dado un grupo hermoso y comprometido para seguir sirviendo.</p>
+      </div>
+      <div>
+        <p style="font-size:1.1rem;margin-bottom:0;">Por eso, desde septiembre queremos asumir el desafío de cocinar nosotros mismos. Para poder seguir con las 3 jornadas semanales necesitamos sumar apoyo.</p>
+        <p style="font-size:1.1rem;margin-top:18px;">Soñamos con tener un lugar físico propio para cocinar, guardar donaciones y recibir a más personas.</p>
+        <div class="barra-meta">
+          <div class="etiquetas"><span>180 platos semanales hoy</span><span>Meta: 300 semanales</span></div>
+          <div class="barra-fondo"><div class="barra-relleno"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divisor-semillas"><span></span><span></span><span></span></div>
+
+<!-- ================= COMO SUMARTE ================= -->
+<section class="seccion revelar" id="sumarte">
+  <div class="contenedor">
+    <div class="encabezado-seccion">
+      <span class="eyebrow">Todo aporte suma</span>
+      <h2>Cómo puedes sumarte</h2>
+      <p>Dios ha sido fiel y ya contamos con hermanos que nos acompañan. Una iglesia nos ayuda proveyendo la comida y otra nos bendice con donación de ropa. Para poder seguir, esto es lo que necesitamos:</p>
+    </div>
+
+    <div class="necesidades-grid">
+      <div class="necesidad-tarjeta">
+        <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a2 2 0 1 0-4 0M6 21h12M8 21V11a4 4 0 0 1 8 0v10"/></svg></div>
+        <h4>Donación de alimentos</h4>
+        <p>Arroz, fideos, polenta, legumbres, aceite, conservas y todo alimento no perecedero. También carne y verduras frescas.</p>
+      </div>
+      <div class="necesidad-tarjeta">
+        <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8l4-4h8l4 4-3 3v9H7v-9L4 8z"/></svg></div>
+        <h4>Ropa y abrigo</h4>
+        <p>Si tiene ropa en buen estado, frazadas o calzado, también nos sirve mucho para entregar.</p>
+      </div>
+      <div class="necesidad-tarjeta">
+        <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div>
+        <h4>Insumos</h4>
+        <p>Bandejas y cubiertos descartables. A veces compramos pan, aunque una panadería amiga suele bendecirnos con él.</p>
+      </div>
+      <div class="necesidad-tarjeta">
+        <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+        <h4>Equipamiento de cocina</h4>
+        <p>Garrafas de gas, un quemador y otros utensilios para poder cocinar nosotros mismos.</p>
+      </div>
+      <div class="necesidad-tarjeta">
+        <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7M5 10v10h14V10"/></svg></div>
+        <h4>Espacio físico</h4>
+        <p>Si tiene un local, salón o espacio para prestarnos o donarnos, contáctenos. Oramos para que Dios lo provea.</p>
+      </div>
+      <div class="necesidad-tarjeta">
+        <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M17 8.2a3 3 0 1 1 3.5 3M15 14.3c2.6.4 4.5 2.3 4.5 5.7"/></svg></div>
+        <h4>Profesionales voluntarios</h4>
+        <p>Peluqueros, músicos y otros talentos son bienvenidos en nuestras jornadas especiales.</p>
+      </div>
+      <div class="necesidad-tarjeta">
+        <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 15.2c.5.9 1.5 1.4 2.7 1.4 1.7 0 3-1 3-2.4 0-3.2-5.6-1.7-5.6-4.9 0-1.4 1.3-2.4 3-2.4 1.2 0 2.2.5 2.7 1.4M12 6.5v11"/></svg></div>
+        <h4>Aporte económico</h4>
+        <p>Todo aporte, grande o pequeño, nos ayuda a cubrir lo que falte para cada jornada.</p>
+      </div>
+      <div class="necesidad-tarjeta" style="background:rgba(184,135,59,0.08);border-color:rgba(184,135,59,0.25);">
+        <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/></svg></div>
+        <h4>¿Empresa u organización?</h4>
+        <p>Si representa una empresa, iglesia u organización y desea ser parte, contáctenos con gusto coordinamos juntos.</p>
+      </div>
+    </div>
+
+    <div class="caja-cuenta">
+      <div>
+        <h3>Aporte económico</h3>
+        <p>Podés colaborar directamente mediante transferencia o depósito bancario a nombre del coordinador.</p>
+      </div>
+      <div class="datos-cuenta">
+        <div><span class="etiqueta">Banco</span><span class="valor">Santander</span></div>
+        <div><span class="etiqueta">Agencia</span><span class="valor">0071</span></div>
+        <div><span class="etiqueta">Cuenta</span><span class="valor">001204787219</span></div>
+        <div><span class="etiqueta">Titular</span><span class="valor">Alanis Caril Damian</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divisor-semillas"><span></span><span></span><span></span></div>
+
+<!-- ================= CONTACTO ================= -->
+<section class="seccion alterna revelar" id="contacto">
+  <div class="contenedor contacto-envoltura">
+    <div>
+      <span class="eyebrow" style="color:var(--salvia);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;font-size:0.8rem;display:block;margin-bottom:12px;">Hablemos</span>
+      <h2>Contacto oficial</h2>
+      <ul class="contacto-lista">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+          Coordinador: Caril Damián Alanís
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          damierreron852@gmail.com
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.1-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73 0-1.3.68-1.93.93-2.2.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.15-.28.34-.4.46-.13.13-.27.27-.12.53.16.26.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.18 1.36.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.16 1.25z"/></svg>
+          096 639 880 (WhatsApp)
+        </li>
+      </ul>
+      <div class="aviso">
+        <strong>Importante:</strong> esta es la única vía oficial de contacto de "Plantando Semillas". No recibimos donaciones ni coordinamos a través de otras personas, páginas o números. Si alguien se comunica en nuestro nombre por otro medio, por favor avísenos.
+      </div>
+    </div>
+    <div class="contacto-tarjeta-cta">
+      <h3>¿Querés escribirnos ahora?</h3>
+      <p>Respondemos por WhatsApp para coordinar donaciones, voluntariado o cualquier consulta.</p>
+      <a href="https://wa.me/59896639880" class="boton-cta" target="_blank" rel="noopener" style="justify-content:center;width:100%;">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.1-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73 0-1.3.68-1.93.93-2.2.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.15-.28.34-.4.46-.13.13-.27.27-.12.53.16.26.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.18 1.36.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.16 1.25z"/></svg>
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REDES SOCIALES ================= -->
+<section class="redes-seccion revelar" id="redes">
+  <div class="contenedor">
+    <div class="encabezado-seccion">
+      <span class="eyebrow">Seguinos</span>
+      <h2>Redes sociales</h2>
+      <p>Enterate de las próximas jornadas y compartí con otros lo que Dios está haciendo.</p>
+    </div>
+    <div class="redes-iconos">
+      <a href="tiktok.com/@plantando.semilla98" class="red-boton" target="_blank" rel="noopener">
+        <span class="red-icono">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2h-3v13.5a2.7 2.7 0 1 1-2.7-2.7c.24 0 .48.02.7.07V9.7a5.9 5.9 0 0 0-.7-.04A5.8 5.8 0 1 0 16.5 15.5V8.2a7.7 7.7 0 0 0 4.5 1.4V6.6a4.7 4.7 0 0 1-4.5-4.6z"/></svg>
+        </span>
+        TikTok
+      </a>
+      <a href="https://www.instagram.com/plantandosemillas2026?igsh=MXdha3UybWk0bjlvNg==&igsi=MXdha3UybWk0bjlvNg==" class="red-boton" target="_blank" rel="noopener">
+        <span class="red-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </span>
+        Instagram
+      </a>
+      <a href="https://www.facebook.com/share/184WvHyhLS/" class="red-boton" target="_blank" rel="noopener">
+        <span class="red-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 8h-2a2 2 0 0 0-2 2v3H9v3h2v6h3v-6h2.2l.8-3H14v-2a1 1 0 0 1 1-1h2V8z"/></svg>
+        </span>
+        Facebook
+      </a>
+      <a href="https://wa.me/59896639880" class="red-boton" target="_blank" rel="noopener">
+        <span class="red-icono">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.1-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73 0-1.3.68-1.93.93-2.2.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.15-.28.34-.4.46-.13.13-.27.27-.12.53.16.26.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.18 1.36.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.16 1.25z"/></svg>
+        </span>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divisor-semillas"><span></span><span></span><span></span></div>
+
+<!-- ================= PIE DE PAGINA ================= -->
+<footer>
+  <div class="contenedor">
+    <div class="pie-envoltura">
+      <div class="pie-marca">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 32c0-7 5-12 11-12 5 0 8 4 8 4s3-4 8-4c6 0 11 5 11 12s-5 12-11 12c-5 0-8-4-8-4s-3 4-8 4c-6 0-11-5-11-12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M32 23v18M23 32h18" stroke="#E9C77C" stroke-width="2.8" stroke-linecap="round"/>
+        </svg>
+        <span class="marca-texto">Plantando Semillas<small>Comunidad &amp; esperanza</small></span>
+      </div>
+      <p class="pie-versiculo">"El que siembra escasamente, también segará escasamente; y el que siembra generosamente, generosamente también segará." — 2 Corintios 9:6</p>
+    </div>
+    <p class="pie-final">© 2026 Plantando Semillas · Coppola y Cerrito · Hecho con fe y con cariño.</p>
+  </div>
+</footer>
+
+<script>
+  // menu movil
+  try{
+    const btnMenu = document.getElementById('btnMenu');
+    const navEnlaces = document.getElementById('navEnlaces');
+    if(btnMenu && navEnlaces){
+      btnMenu.addEventListener('click', () => {
+        const abierto = navEnlaces.classList.toggle('abierta');
+        btnMenu.setAttribute('aria-expanded', abierto);
+      });
+      navEnlaces.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        navEnlaces.classList.remove('abierta');
+        btnMenu.setAttribute('aria-expanded', 'false');
+      }));
+    }
+  }catch(err){ console.error('Error en el menú móvil:', err); }
+
+  // carrusel
+  try{
+    const pista = document.getElementById('pista');
+    const carrusel = document.getElementById('carrusel');
+    const puntosCont = document.getElementById('puntos');
+    if(pista && carrusel && puntosCont){
+      const slides = pista.querySelectorAll('.slide');
+      let indice = 0;
+      let temporizador;
+      const prefiereMenosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      slides.forEach((_, i) => {
+        const p = document.createElement('button');
+        p.className = 'punto' + (i === 0 ? ' activo' : '');
+        p.setAttribute('aria-label', 'Ir a la foto ' + (i + 1));
+        p.addEventListener('click', () => irA(i));
+        puntosCont.appendChild(p);
+      });
+      const puntos = puntosCont.querySelectorAll('.punto');
+
+      function irA(i){
+        indice = (i + slides.length) % slides.length;
+        pista.style.transform = `translateX(-${indice * 100}%)`;
+        puntos.forEach((p, idx) => p.classList.toggle('activo', idx === indice));
+      }
+      function siguiente(){ irA(indice + 1); }
+      function anterior(){ irA(indice - 1); }
+
+      const btnSiguiente = document.getElementById('btnSiguiente');
+      const btnAnterior = document.getElementById('btnAnterior');
+      if(btnSiguiente) btnSiguiente.addEventListener('click', () => { siguiente(); reiniciarAuto(); });
+      if(btnAnterior) btnAnterior.addEventListener('click', () => { anterior(); reiniciarAuto(); });
+
+      function iniciarAuto(){
+        if(prefiereMenosMovimiento) return;
+        temporizador = setInterval(siguiente, 4200);
+      }
+      function reiniciarAuto(){
+        clearInterval(temporizador);
+        iniciarAuto();
+      }
+      carrusel.addEventListener('mouseenter', () => clearInterval(temporizador));
+      carrusel.addEventListener('mouseleave', iniciarAuto);
+      carrusel.addEventListener('focusin', () => clearInterval(temporizador));
+      carrusel.addEventListener('focusout', iniciarAuto);
+      iniciarAuto();
+    }
+  }catch(err){ console.error('Error en el carrusel:', err); }
+
+  // zona de evidencia: cargar más de a tandas
+  try{
+    const btnCargarMas = document.getElementById('btnCargarMas');
+    if(btnCargarMas){
+      btnCargarMas.addEventListener('click', () => {
+        const ocultos = document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto');
+        ocultos.forEach((item, i) => { if(i < 8) item.classList.remove('oculto'); });
+        if(document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto').length === 0){
+          btnCargarMas.style.display = 'none';
+        }
+      });
+    }
+  }catch(err){ console.error('Error en el botón de cargar más:', err); }
+
+  // revelado al scroll (con red de seguridad: si algo falla, se muestra todo igual)
+  try{
+    const elementosRevelar = document.querySelectorAll('.revelar');
+    if('IntersectionObserver' in window){
+      const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.12 });
+      elementosRevelar.forEach(el => observador.observe(el));
+    } else {
+      elementosRevelar.forEach(el => el.classList.add('visible'));
+    }
+    // red de seguridad: pase lo que pase, a los 2.5s todo queda visible igual
+    setTimeout(() => {
+      document.querySelectorAll('.revelar:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 2500);
+  }catch(err){
+    console.error('Error en el revelado por scroll:', err);
+    document.querySelectorAll('.revelar').forEach(el => el.classList.add('visible'));
+  }
+</script>
+
+</body>
+</html>
