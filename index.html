@@ -24,28 +24,6 @@
     --font-display: 'Fraunces', Georgia, serif;
     --font-body: 'Karla', 'Segoe UI', sans-serif;
   }
-/* --- Estilos del Logo del Menú de Navegación --- */
-.logo-imagen {
-  width: 42px;         /* Tamaño compacto ideal para barras de navegación */
-  height: 42px;        /* Mantiene la proporción cuadrada */
-  object-fit: cover;   /* Evita que se distorsione o se estire */
-  border-radius: 50%;  /* Lo hace completamente circular */
-}
-
-/* --- Estilos del Logo de la Sección Hero --- */
-.hero-marca-grande .aro {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;    /* Asegura que nada se salga del aro decorativo */
-}
-
-.logo-hero {
-  width: 100%;         /* Se expande para llenar todo el ancho disponible del aro */
-  height: 100%;        /* Se expande para llenar todo el alto disponible del aro */
-  object-fit: cover;   /* Se adapta correctamente sin perder sus proporciones */
-  border-radius: 50%;  /* Corta tu imagen jpg de forma circular */
-}
 
   *{margin:0;padding:0;box-sizing:border-box;}
 
@@ -342,6 +320,11 @@
     align-items:flex-end;
     padding:38px 44px;
   }
+  .slide .fondo-real{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+  }
   .slide .fondo-ilustrado{
     position:absolute;inset:0;
   }
@@ -621,6 +604,48 @@
   }
 
   /* como sumarte */
+  /* necesidad urgente */
+  .urgente-banner{
+    background:linear-gradient(135deg, rgba(184,135,59,0.14), rgba(184,135,59,0.05));
+    border:1.5px solid rgba(184,135,59,0.4);
+    border-radius:20px;
+    padding:30px 32px;
+    margin-bottom:36px;
+    display:flex;
+    align-items:center;
+    gap:26px;
+    flex-wrap:wrap;
+  }
+  .urgente-etiqueta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--oro);
+    color:var(--blanco);
+    font-weight:800;
+    font-size:0.78rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    padding:8px 16px;
+    border-radius:100px;
+    flex-shrink:0;
+  }
+  .urgente-lista{
+    display:flex;
+    gap:34px;
+    flex-wrap:wrap;
+    flex:1;
+  }
+  .urgente-item{display:flex;align-items:center;gap:12px;}
+  .urgente-item .jornada-icono{background:rgba(184,135,59,0.18);margin-bottom:0;width:46px;height:46px;flex-shrink:0;}
+  .urgente-item .jornada-icono svg{width:22px;height:22px;color:var(--oro-oscuro);}
+  .urgente-item strong{display:block;color:var(--azul);font-family:var(--font-display);font-size:1.05rem;}
+  .urgente-item span{font-size:0.9rem;opacity:0.75;}
+
+  @media (max-width:720px){
+    .urgente-banner{padding:24px;}
+  }
+
   .necesidades-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -710,6 +735,71 @@
   }
   .contacto-tarjeta-cta h3{color:var(--blanco);font-size:1.7rem;margin-bottom:14px;}
   .contacto-tarjeta-cta p{opacity:0.88;margin-bottom:28px;}
+
+  /* agradecimientos */
+  .agradecimientos-envoltura{
+    position:relative;
+  }
+  .agradecimientos-pista{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    scroll-snap-type:x proximity;
+    padding:8px 4px 20px;
+    scrollbar-width:thin;
+    scrollbar-color:var(--oro) transparent;
+  }
+  .agradecimientos-pista::-webkit-scrollbar{height:8px;}
+  .agradecimientos-pista::-webkit-scrollbar-thumb{background:var(--oro);border-radius:100px;}
+  .agradecimientos-pista::-webkit-scrollbar-track{background:rgba(0,56,81,0.06);}
+  .persona-tarjeta{
+    scroll-snap-align:start;
+    flex:0 0 220px;
+    background:var(--blanco);
+    border-radius:16px;
+    padding:22px 18px;
+    text-align:center;
+    box-shadow:0 6px 16px rgba(0,56,81,0.08);
+    border:1px solid rgba(0,56,81,0.06);
+  }
+  .persona-avatar{
+    width:74px;height:74px;
+    border-radius:50%;
+    margin:0 auto 14px;
+    background:linear-gradient(155deg, var(--azul), var(--azul-claro));
+    color:var(--blanco);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.4rem;
+    overflow:hidden;
+  }
+  .persona-avatar img{width:100%;height:100%;object-fit:cover;}
+  .persona-tarjeta h4{
+    font-family:var(--font-display);
+    color:var(--azul);
+    font-size:1rem;
+    margin-bottom:6px;
+  }
+  .persona-tarjeta p{
+    font-size:0.82rem;
+    opacity:0.78;
+    line-height:1.45;
+    margin-bottom:0;
+  }
+  .agradecimientos-controles{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:6px;
+  }
+  .agradecimientos-controles .carrusel-flecha{
+    position:static;
+    border-color:rgba(0,56,81,0.3);
+    background:var(--blanco);
+    color:var(--azul);
+  }
+  .agradecimientos-controles .carrusel-flecha:hover{background:var(--azul);color:var(--blanco);}
 
   /* zona de evidencia (galeria) */
   .evidencia-grid{
@@ -915,13 +1005,16 @@
 <header>
   <div class="nav-envoltura">
     <a href="#inicio" class="marca">
-      <!-- 1. CAMBIO: Tu logo en el menú -->
-      <img src="logo.jpeg" alt="Plantando Semillas" class="logo-imagen">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--azul)">
+        <path d="M18 32c0-7 5-12 11-12 5 0 8 4 8 4s3-4 8-4c6 0 11 5 11 12s-5 12-11 12c-5 0-8-4-8-4s-3 4-8 4c-6 0-11-5-11-12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M32 23v18M23 32h18" stroke="#B8873B" stroke-width="2.8" stroke-linecap="round"/>
+      </svg>
       <span class="marca-texto">Plantando Semillas<small>Comunidad &amp; esperanza</small></span>
     </a>
 
     <nav class="enlaces" id="navEnlaces">
       <a href="#historia">Nuestra historia</a>
+      <a href="#agradecimientos">Agradecimientos</a>
       <a href="#jornadas">Jornadas especiales</a>
       <a href="#evidencia">Evidencia</a>
       <a href="#cronograma">Cronograma</a>
@@ -962,14 +1055,15 @@
       </div>
     </div>
     <div class="hero-marca-grande">
-      <!-- 2. CAMBIO: Se remueve el CSS inline y se inserta tu logo dentro del aro -->
       <div class="aro">
-        <img src="logo.jpeg" alt="Logo de la comunidad" class="logo-hero">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:#F5F2EA">
+          <path d="M18 32c0-7 5-12 11-12 5 0 8 4 8 4s3-4 8-4c6 0 11 5 11 12s-5 12-11 12c-5 0-8-4-8-4s-3 4-8 4c-6 0-11-5-11-12z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M32 22v20M22 32h20" stroke="#E9C77C" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- ================= CARRUSEL DE FOTOS ================= -->
 <section class="carrusel-seccion">
@@ -977,7 +1071,8 @@
     <div class="carrusel" id="carrusel">
       <div class="carrusel-pista" id="pista">
 
-        <div class="slide" style="background:linear-gradient(135deg,#0b5c82,#003851)">
+        <div class="slide">
+          <img class="fondo-real" src="media/IMG-20260817-WA0018.jpg" alt="Jornada de Plantando Semillas">
           <div class="capa-oscura"></div>
           <div class="slide-contenido">
             <span class="num">01 · En la calle</span>
@@ -986,7 +1081,8 @@
           </div>
         </div>
 
-        <div class="slide" style="background:linear-gradient(135deg,#8f6726,#B8873B)">
+        <div class="slide">
+          <img class="fondo-real" src="media/IMG-20260817-WA0115.jpg" alt="Jornada de Plantando Semillas">
           <div class="capa-oscura"></div>
           <div class="slide-contenido">
             <span class="num">02 · Palabra y comunidad</span>
@@ -995,7 +1091,8 @@
           </div>
         </div>
 
-        <div class="slide" style="background:linear-gradient(135deg,#5F7F5E,#3f5c3f)">
+        <div class="slide">
+          <img class="fondo-real" src="media/IMG-20260817-WA0081.jpg" alt="Jornada de Plantando Semillas">
           <div class="capa-oscura"></div>
           <div class="slide-contenido">
             <span class="num">03 · Jornadas especiales</span>
@@ -1004,7 +1101,8 @@
           </div>
         </div>
 
-        <div class="slide" style="background:linear-gradient(135deg,#003851,#5F7F5E)">
+        <div class="slide">
+          <img class="fondo-real" src="media/IMG-20260817-WA0068.jpg" alt="Jornada de Plantando Semillas">
           <div class="capa-oscura"></div>
           <div class="slide-contenido">
             <span class="num">04 · Diez congregaciones, un propósito</span>
@@ -1013,7 +1111,8 @@
           </div>
         </div>
 
-        <div class="slide" style="background:linear-gradient(135deg,#B8873B,#003851)">
+        <div class="slide">
+          <img class="fondo-real" src="media/IMG-20260817-WA0136.jpg" alt="Jornada de Plantando Semillas">
           <div class="capa-oscura"></div>
           <div class="slide-contenido">
             <span class="num">05 · El sueño que viene</span>
@@ -1051,8 +1150,10 @@
       <div>
         <p>"Plantando Semillas" comenzó en el corazón de una familia, planeado alrededor de una mesa en nuestro hogar. Todo inició con unas tortas horneadas y un café caliente. Yo, Damián, junto a mi esposa María y a nuestro hijo Allan, decidimos salir caminando por las calles de Coppola y Cerrito para compartir lo poco que teníamos.</p>
         <p>Pero no solo compartíamos lo material. En cada encuentro también compartíamos una palabra de esperanza y de fe, porque sabemos que el alma también necesita ser alimentada.</p>
-        <p>Dios fue abriendo puertas. Al cabo de 3 meses, Dios abrió la puerta de un refugio y pudimos empezar a entregar un plato de comida caliente y sólido. Ahí acompañamos a personas que, por diferentes situaciones, no tienen hogar y están tratando de salir adelante.</p>
-        <p>Hoy, gracias a una iglesia hermana que nos dona aproximadamente 60 platos por jornada y otra que nos bendice con ropa y otras cosas, somos 10 hermanos de diferentes congregaciones que salimos 3 veces por semana. Cuando nos toca cocinar a nosotros, hemos podido servir entre 100 y 110 platos en una jornada. Nuestro anhelo es poder llegar a los 300 platos semanales.</p>
+        <p>Empezamos a comunicar a las personas que empezaríamos a compartir los alimentos en la plaza. Gracias a un amigo (Pipo) de la iglesia GEMU que nos planteó la posibilidad de que otra iglesia nos apoyara con comida sólida, y que además muchas veces traslada la comida poniendo tiempo y esfuerzo, pudimos dar ese paso. También queremos nombrar a Iris y a su esposo de GEMU, que desde que empezamos nos han acompañado y bendecido con chupetines para los niños, pan y agua.</p>
+        <p>E increíblemente, poco después llegaron unos jóvenes que trabajan en un refugio, porque se habían enterado de lo que se hacía y querían apoyarnos. Así surge la posibilidad de servir un plato en ese lugar donde muchos tratan de salir adelante. Allí conocimos al Pastor Gustavo Amorín, quien ha sido una gran bendición no solo por abrirnos las puertas de ese lugar sino también por apoyarnos en las actividades especiales ayudando con cosas, sino que también con un grupo de jóvenes que nos han ayudado con cortes de pelo y a organizarnos mejor en esas jornadas.</p>
+        <p>Al pasar las semanas se empezaron a sumar hermanos en la fe, no solo de nuestra Iglesia sino también de otras. Y así hasta hoy, formando un grupo comprometido y sólido con la mirada en Jesús, tratando de imitar sus pisadas.</p>
+        <p>Hoy no solo somos un grupo de 10 hermanos de diferentes congregaciones que salimos 3 veces por semana, sino también muchos que, detrás, cumplen un rol muy importante apoyando con lo necesario y unidos en oración para que esto pueda seguir y ser posible. Contamos con una iglesia hermana que nos dona aproximadamente 60 platos por jornada y otra iglesia que nos bendice con ropa y otras cosas. Cuando nos toca cocinar a nosotros, hemos podido servir entre 100 y 110 platos en una jornada. Nuestro anhelo es poder llegar a los 300 platos semanales.</p>
         <div class="cita-versiculo">Creemos que esto tan lindo que Dios viene haciendo demuestra que, sin importar la denominación, bandera o paredes, podemos unirnos para un Gran Propósito: trabajar todos juntos por un solo Reino.</div>
       </div>
       <div class="tarjetas-stats">
@@ -1067,8 +1168,63 @@
 
 <div class="divisor-semillas"><span></span><span></span><span></span></div>
 
+<!-- ================= AGRADECIMIENTOS ================= -->
+<section class="seccion alterna revelar" id="agradecimientos">
+  <div class="contenedor">
+    <div class="encabezado-seccion">
+      <span class="eyebrow">Con gratitud</span>
+      <h2>Gracias a quienes hacen esto posible</h2>
+      <p>Nada de esto sería posible sin las personas e iglesias que Dios ha puesto en el camino.</p>
+    </div>
+    <div class="agradecimientos-envoltura">
+      <div class="agradecimientos-pista" id="pistaAgradecimientos">
+        <div class="persona-tarjeta">
+          <div class="persona-avatar">GA</div>
+          <h4>Pastor Gustavo Amorín y su equipo</h4>
+          <p>Por abrirnos las puertas del refugio, apoyarnos en las jornadas especiales y por el grupo de jóvenes que nos ayudan con cortes de pelo y organización.</p>
+        </div>
+        <div class="persona-tarjeta">
+          <div class="persona-avatar">P</div>
+          <h4>Pipo — Iglesia GEMU</h4>
+          <p>Por plantear el apoyo con comida sólida de otra iglesia y por trasladar la comida poniendo tiempo y esfuerzo.</p>
+        </div>
+        <div class="persona-tarjeta">
+          <div class="persona-avatar">I</div>
+          <h4>Iris y su esposo — GEMU</h4>
+          <p>Nos acompañan desde el inicio, bendiciendo a los niños con chupetines, y a todos con pan y agua.</p>
+        </div>
+        <div class="persona-tarjeta">
+          <div class="persona-avatar">JR</div>
+          <h4>Jóvenes del refugio</h4>
+          <p>Se enteraron de lo que hacíamos y se sumaron a apoyarnos, abriendo la puerta a servir platos en el refugio.</p>
+        </div>
+        <div class="persona-tarjeta">
+          <div class="persona-avatar">🍲</div>
+          <h4>Iglesia hermana (comida)</h4>
+          <p>Nos dona aproximadamente 60 platos por cada jornada que salimos a servir.</p>
+        </div>
+        <div class="persona-tarjeta">
+          <div class="persona-avatar">👕</div>
+          <h4>Iglesia hermana (ropa)</h4>
+          <p>Nos bendice con donaciones de ropa y otras cosas para entregar a quienes servimos.</p>
+        </div>
+      </div>
+      <div class="agradecimientos-controles">
+        <button class="carrusel-flecha" id="btnAgraAnterior" aria-label="Ver anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carrusel-flecha" id="btnAgraSiguiente" aria-label="Ver siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divisor-semillas"><span></span><span></span><span></span></div>
+
 <!-- ================= JORNADAS ESPECIALES ================= -->
-<section class="seccion alterna revelar" id="jornadas">
+<section class="seccion revelar" id="jornadas">
   <div class="contenedor">
     <div class="encabezado-seccion">
       <span class="eyebrow">Más que un plato de comida</span>
@@ -1114,17 +1270,7 @@
     </div>
 
     <div class="evidencia-grid" id="evidenciaGrid">
-      <!-- Reemplazá cada .evidencia-item.marcador por tu foto o video real (ver instrucciones en el código) -->
-      <div class="evidencia-item marcador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 1</span></div>
-      <div class="evidencia-item marcador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 2</span></div>
-      <div class="evidencia-item marcador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 3</span></div>
-      <div class="evidencia-item marcador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Video 1</span></div>
-      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 4</span></div>
-      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 5</span></div>
-      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 6</span></div>
-      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Video 2</span></div>
-      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 7</span></div>
-      <div class="evidencia-item marcador oculto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-3-3-4 4"/></svg><span>Foto 8</span></div>
+      <!-- Este contenido se genera automáticamente desde la lista "archivosEvidencia" que está en el <script> al final del archivo. -->
     </div>
 
     <div class="evidencia-boton-envoltura">
@@ -1198,6 +1344,20 @@
       <p>Dios ha sido fiel y ya contamos con hermanos que nos acompañan. Una iglesia nos ayuda proveyendo la comida y otra nos bendice con donación de ropa. Para poder seguir, esto es lo que necesitamos:</p>
     </div>
 
+    <div class="urgente-banner">
+      <span class="urgente-etiqueta">Urgente</span>
+      <div class="urgente-lista">
+        <div class="urgente-item">
+          <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 11h14M9 5.5h.01M9 15.5h.01"/></svg></div>
+          <div><strong>Un freezer</strong><span>Para conservar los insumos y alimentos donados.</span></div>
+        </div>
+        <div class="urgente-item">
+          <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h16v3a7 7 0 0 1-7 7H11a7 7 0 0 1-7-7v-3z"/><path d="M4 10a8 8 0 0 1 16 0M9 4c-.7.6-1 1.2-1 2M15 4c.7.6 1 1.2 1 2"/></svg></div>
+          <div><strong>Una olla de 80 litros</strong><span>Como mínimo, para poder cocinar nosotros mismos.</span></div>
+        </div>
+      </div>
+    </div>
+
     <div class="necesidades-grid">
       <div class="necesidad-tarjeta">
         <div class="jornada-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a2 2 0 1 0-4 0M6 21h12M8 21V11a4 4 0 0 1 8 0v10"/></svg></div>
@@ -1244,13 +1404,18 @@
     <div class="caja-cuenta">
       <div>
         <h3>Aporte económico</h3>
-        <p>Podés colaborar directamente mediante transferencia o depósito bancario a nombre del coordinador.</p>
+        <p>Podés colaborar directamente mediante transferencia o depósito bancario, o por Mi Dinero, a nombre del coordinador.</p>
       </div>
-      <div class="datos-cuenta">
-        <div><span class="etiqueta">Banco</span><span class="valor">Santander</span></div>
-        <div><span class="etiqueta">Agencia</span><span class="valor">0071</span></div>
-        <div><span class="etiqueta">Cuenta</span><span class="valor">001204787219</span></div>
-        <div><span class="etiqueta">Titular</span><span class="valor">Alanis Caril Damian</span></div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="datos-cuenta">
+          <div><span class="etiqueta">Banco</span><span class="valor">Santander</span></div>
+          <div><span class="etiqueta">Agencia</span><span class="valor">0071</span></div>
+          <div><span class="etiqueta">Cuenta</span><span class="valor">001204787219</span></div>
+          <div><span class="etiqueta">Titular</span><span class="valor">Alanis Caril Damian</span></div>
+        </div>
+        <div class="datos-cuenta">
+          <div><span class="etiqueta">Mi Dinero</span><span class="valor">3925954</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1302,19 +1467,19 @@
       <p>Enterate de las próximas jornadas y compartí con otros lo que Dios está haciendo.</p>
     </div>
     <div class="redes-iconos">
-      <a href="tiktok.com/@plantando.semilla98" class="red-boton" target="_blank" rel="noopener">
+      <a href="#" class="red-boton" target="_blank" rel="noopener">
         <span class="red-icono">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2h-3v13.5a2.7 2.7 0 1 1-2.7-2.7c.24 0 .48.02.7.07V9.7a5.9 5.9 0 0 0-.7-.04A5.8 5.8 0 1 0 16.5 15.5V8.2a7.7 7.7 0 0 0 4.5 1.4V6.6a4.7 4.7 0 0 1-4.5-4.6z"/></svg>
         </span>
         TikTok
       </a>
-      <a href="https://www.instagram.com/plantandosemillas2026?igsh=MXdha3UybWk0bjlvNg==&igsi=MXdha3UybWk0bjlvNg==" class="red-boton" target="_blank" rel="noopener">
+      <a href="#" class="red-boton" target="_blank" rel="noopener">
         <span class="red-icono">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
         </span>
         Instagram
       </a>
-      <a href="https://www.facebook.com/share/184WvHyhLS/" class="red-boton" target="_blank" rel="noopener">
+      <a href="#" class="red-boton" target="_blank" rel="noopener">
         <span class="red-icono">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 8h-2a2 2 0 0 0-2 2v3H9v3h2v6h3v-6h2.2l.8-3H14v-2a1 1 0 0 1 1-1h2V8z"/></svg>
         </span>
@@ -1415,19 +1580,96 @@
     }
   }catch(err){ console.error('Error en el carrusel:', err); }
 
-  // zona de evidencia: cargar más de a tandas
+  // ================================================================
+  // ZONA DE EVIDENCIA: arma la galería sola a partir de los nombres
+  // de archivo. Poné tus fotos y videos dentro de una carpeta llamada
+  // "media" (al lado de este index.html) usando el mismo nombre que
+  // tienen del celular (IMG-20260817-WA0018.jpg, etc). La página
+  // prueba cada foto entre la WA0018 y la WA0136: la que exista, la
+  // muestra; la que no exista, simplemente no aparece (no rompe nada).
+  // Si sacás fotos con otra fecha o numeración, agregá ese nombre
+  // directo en la lista "candidatosVideos" o copiá el patrón del for.
+  // ================================================================
   try{
+    const grid = document.getElementById('evidenciaGrid');
     const btnCargarMas = document.getElementById('btnCargarMas');
-    if(btnCargarMas){
-      btnCargarMas.addEventListener('click', () => {
-        const ocultos = document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto');
-        ocultos.forEach((item, i) => { if(i < 8) item.classList.remove('oculto'); });
-        if(document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto').length === 0){
-          btnCargarMas.style.display = 'none';
-        }
-      });
+    if(grid){
+      const candidatosFotos = [];
+      for(let n = 18; n <= 136; n++){
+        candidatosFotos.push('IMG-20260817-WA' + String(n).padStart(4,'0') + '.jpg');
+      }
+      const candidatosVideos = ['0003','0004','0005','0009'].map(n => 'VID-20260818-WA' + n + '.mp4');
+
+      function existeImagen(archivo){
+        return new Promise(resolve => {
+          const img = new Image();
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = 'media/' + archivo;
+        });
+      }
+
+      Promise.all(candidatosFotos.map(archivo => existeImagen(archivo).then(existe => existe ? { tipo:'foto', archivo } : null)))
+        .then(resultados => {
+          const fotosValidas = resultados.filter(Boolean);
+          const videos = candidatosVideos.map(archivo => ({ tipo:'video', archivo }));
+          const items = [...fotosValidas, ...videos];
+
+          items.forEach((item, i) => {
+            const div = document.createElement('div');
+            div.className = 'evidencia-item' + (i >= 8 ? ' oculto' : '');
+            if(item.tipo === 'foto'){
+              const img = document.createElement('img');
+              img.src = 'media/' + item.archivo;
+              img.alt = 'Jornada de Plantando Semillas';
+              img.loading = 'lazy';
+              div.appendChild(img);
+            } else {
+              const video = document.createElement('video');
+              video.src = 'media/' + item.archivo;
+              video.controls = true;
+              video.preload = 'metadata';
+              video.onerror = () => div.remove();
+              const marca = document.createElement('span');
+              marca.className = 'marca-video';
+              marca.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+              div.appendChild(video);
+              div.appendChild(marca);
+            }
+            grid.appendChild(div);
+          });
+
+          if(items.length <= 8 && btnCargarMas) btnCargarMas.style.display = 'none';
+          if(items.length === 0){
+            grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:0.6;padding:20px 0;">Todavía no hay fotos en la carpeta "media". Agregalas ahí con su nombre original.</p>';
+            if(btnCargarMas) btnCargarMas.style.display = 'none';
+          }
+        })
+        .catch(err => console.error('Error revisando las fotos de evidencia:', err));
+
+      if(btnCargarMas){
+        btnCargarMas.addEventListener('click', () => {
+          const ocultos = document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto');
+          ocultos.forEach((item, i) => { if(i < 8) item.classList.remove('oculto'); });
+          if(document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto').length === 0){
+            btnCargarMas.style.display = 'none';
+          }
+        });
+      }
     }
-  }catch(err){ console.error('Error en el botón de cargar más:', err); }
+  }catch(err){ console.error('Error en la zona de evidencia:', err); }
+
+  // agradecimientos: flechas para deslizar el carrusel horizontal
+  try{
+    const pistaAgra = document.getElementById('pistaAgradecimientos');
+    const btnAgraAnterior = document.getElementById('btnAgraAnterior');
+    const btnAgraSiguiente = document.getElementById('btnAgraSiguiente');
+    if(pistaAgra && btnAgraAnterior && btnAgraSiguiente){
+      const distancia = 240;
+      btnAgraSiguiente.addEventListener('click', () => pistaAgra.scrollBy({ left: distancia, behavior: 'smooth' }));
+      btnAgraAnterior.addEventListener('click', () => pistaAgra.scrollBy({ left: -distancia, behavior: 'smooth' }));
+    }
+  }catch(err){ console.error('Error en el carrusel de agradecimientos:', err); }
 
   // revelado al scroll (con red de seguridad: si algo falla, se muestra todo igual)
   try{
