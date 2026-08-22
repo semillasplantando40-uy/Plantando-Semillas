@@ -1069,61 +1069,9 @@
 <section class="carrusel-seccion">
   <div class="contenedor">
     <div class="carrusel" id="carrusel">
-      <div class="carrusel-pista" id="pista">
+      <div class="carrusel-pista" id="pista"></div>
 
-        <div class="slide">
-          <img class="fondo-real" src="media/IMG-20260817-WA0018.jpg" alt="Jornada de Plantando Semillas">
-          <div class="capa-oscura"></div>
-          <div class="slide-contenido">
-            <span class="num">01 · En la calle</span>
-            <h3>Un plato caliente, entregado con las manos</h3>
-            <p>Tres veces por semana salimos a la Plaza de General Flores y Carreras Nacionales a compartir la cena.</p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img class="fondo-real" src="media/IMG-20260817-WA0115.jpg" alt="Jornada de Plantando Semillas">
-          <div class="capa-oscura"></div>
-          <div class="slide-contenido">
-            <span class="num">02 · Palabra y comunidad</span>
-            <h3>Alimento para el cuerpo, palabra para el alma</h3>
-            <p>En cada encuentro compartimos una palabra de esperanza y de fe junto al plato de comida.</p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img class="fondo-real" src="media/IMG-20260817-WA0081.jpg" alt="Jornada de Plantando Semillas">
-          <div class="capa-oscura"></div>
-          <div class="slide-contenido">
-            <span class="num">03 · Jornadas especiales</span>
-            <h3>Cortes de pelo y ropa de abrigo</h3>
-            <p>En nuestros eventos especiales sumamos peluqueros voluntarios y una mesa de ropa para elegir.</p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img class="fondo-real" src="media/IMG-20260817-WA0068.jpg" alt="Jornada de Plantando Semillas">
-          <div class="capa-oscura"></div>
-          <div class="slide-contenido">
-            <span class="num">04 · Diez congregaciones, un propósito</span>
-            <h3>Distintas iglesias, un mismo Reino</h3>
-            <p>Sin importar denominación, bandera o paredes, nos unimos para servir juntos cada semana.</p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img class="fondo-real" src="media/IMG-20260817-WA0136.jpg" alt="Jornada de Plantando Semillas">
-          <div class="capa-oscura"></div>
-          <div class="slide-contenido">
-            <span class="num">05 · El sueño que viene</span>
-            <h3>Camino a los 300 platos semanales</h3>
-            <p>Soñamos con un espacio propio para cocinar, guardar donaciones y recibir a más personas.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="carrusel-puntos" id="puntos"></div>
+      <div class="carrusel-puntos id="puntos"></div>
       <div class="carrusel-controles">
         <button class="carrusel-flecha" id="btnAnterior" aria-label="Foto anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
@@ -1133,7 +1081,7 @@
         </button>
       </div>
     </div>
-    <p class="nota-fotos">Estas escenas son ilustrativas — reemplazalas por fotos reales de las jornadas cuando las tengas.</p>
+    <p class="nota-fotos">Las fotos se cargan automáticamente desde los archivos reales de la carpeta media.</p>
   </div>
 </section>
 
@@ -1514,6 +1462,7 @@
   </div>
 </footer>
 
+<script src="media-list.js"></script>
 <script>
   // menu movil
   try{
@@ -1531,129 +1480,109 @@
     }
   }catch(err){ console.error('Error en el menú móvil:', err); }
 
-  // carrusel
+  // carrusel: usa solamente archivos que actualizar-media.cmd detectó en /media
   try{
     const pista = document.getElementById('pista');
     const carrusel = document.getElementById('carrusel');
     const puntosCont = document.getElementById('puntos');
-    if(pista && carrusel && puntosCont){
+    const archivos = Array.isArray(window.MEDIA_FILES) ? window.MEDIA_FILES : [];
+    const fotos = archivos.filter(f => /\.(jpe?g|png|webp|gif)$/i.test(f));
+    if(pista && carrusel && puntosCont && fotos.length){
+      const textos = [
+        ['01 · En la calle', 'Un plato caliente, entregado con las manos', 'Cada imagen cuenta una parte de nuestra jornada de servicio.'],
+        ['02 · Palabra y comunidad', 'Alimento para el cuerpo, esperanza para el corazón', 'Compartimos comida, tiempo, oración y una palabra de fe.'],
+        ['03 · Jornadas especiales', 'Servimos juntos y sumamos manos', 'Cuando nos unimos, podemos llegar a más personas.'],
+        ['04 · Comunidad', 'Distintas iglesias, un mismo propósito', 'Trabajamos juntos por un solo Reino.'],
+        ['05 · El sueño que viene', 'Camino a los 300 platos semanales', 'Seguimos creciendo paso a paso, con fe y generosidad.']
+      ];
+      fotos.slice(0, 5).forEach((archivo, i) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        const img = document.createElement('img');
+        img.className = 'fondo-real';
+        img.src = 'media/' + encodeURIComponent(archivo);
+        img.alt = 'Jornada de Plantando Semillas';
+        const capa = document.createElement('div');
+        capa.className = 'capa-oscura';
+        const contenido = document.createElement('div');
+        contenido.className = 'slide-contenido';
+        const t = textos[i] || textos[0];
+        const num = document.createElement('span'); num.className='num'; num.textContent=t[0];
+        const h3 = document.createElement('h3'); h3.textContent=t[1];
+        const p = document.createElement('p'); p.textContent=t[2];
+        contenido.append(num,h3,p);
+        slide.append(img,capa,contenido);
+        pista.appendChild(slide);
+      });
       const slides = pista.querySelectorAll('.slide');
       let indice = 0;
       let temporizador;
       const prefiereMenosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
       slides.forEach((_, i) => {
-        const p = document.createElement('button');
-        p.className = 'punto' + (i === 0 ? ' activo' : '');
-        p.setAttribute('aria-label', 'Ir a la foto ' + (i + 1));
-        p.addEventListener('click', () => irA(i));
-        puntosCont.appendChild(p);
+        const punto = document.createElement('button');
+        punto.className = 'punto' + (i === 0 ? ' activo' : '');
+        punto.setAttribute('aria-label', 'Ir a la foto ' + (i + 1));
+        punto.addEventListener('click', () => irA(i));
+        puntosCont.appendChild(punto);
       });
       const puntos = puntosCont.querySelectorAll('.punto');
-
-      function irA(i){
-        indice = (i + slides.length) % slides.length;
-        pista.style.transform = `translateX(-${indice * 100}%)`;
-        puntos.forEach((p, idx) => p.classList.toggle('activo', idx === indice));
-      }
-      function siguiente(){ irA(indice + 1); }
-      function anterior(){ irA(indice - 1); }
-
-      const btnSiguiente = document.getElementById('btnSiguiente');
-      const btnAnterior = document.getElementById('btnAnterior');
-      if(btnSiguiente) btnSiguiente.addEventListener('click', () => { siguiente(); reiniciarAuto(); });
-      if(btnAnterior) btnAnterior.addEventListener('click', () => { anterior(); reiniciarAuto(); });
-
-      function iniciarAuto(){
-        if(prefiereMenosMovimiento) return;
-        temporizador = setInterval(siguiente, 4200);
-      }
-      function reiniciarAuto(){
-        clearInterval(temporizador);
-        iniciarAuto();
-      }
-      carrusel.addEventListener('mouseenter', () => clearInterval(temporizador));
-      carrusel.addEventListener('mouseleave', iniciarAuto);
-      carrusel.addEventListener('focusin', () => clearInterval(temporizador));
-      carrusel.addEventListener('focusout', iniciarAuto);
+      function irA(i){ indice=(i+slides.length)%slides.length; pista.style.transform=`translateX(-${indice*100}%)`; puntos.forEach((p,idx)=>p.classList.toggle('activo',idx===indice)); }
+      function siguiente(){ irA(indice+1); }
+      function anterior(){ irA(indice-1); }
+      const btnSiguiente=document.getElementById('btnSiguiente');
+      const btnAnterior=document.getElementById('btnAnterior');
+      if(btnSiguiente) btnSiguiente.addEventListener('click',()=>{siguiente();reiniciarAuto();});
+      if(btnAnterior) btnAnterior.addEventListener('click',()=>{anterior();reiniciarAuto();});
+      function iniciarAuto(){ if(prefiereMenosMovimiento||slides.length<2) return; clearInterval(temporizador); temporizador=setInterval(siguiente,4200); }
+      function reiniciarAuto(){ clearInterval(temporizador); iniciarAuto(); }
+      carrusel.addEventListener('mouseenter',()=>clearInterval(temporizador));
+      carrusel.addEventListener('mouseleave',iniciarAuto);
+      carrusel.addEventListener('focusin',()=>clearInterval(temporizador));
+      carrusel.addEventListener('focusout',iniciarAuto);
       iniciarAuto();
+    } else if(pista){
+      pista.innerHTML='<div class="slide"><div class="slide-contenido"><h3>No hay fotos cargadas todavía</h3><p>Copiá tus fotos en la carpeta media, ejecutá actualizar-media.cmd y volvé a abrir la web.</p></div></div>';
     }
   }catch(err){ console.error('Error en el carrusel:', err); }
 
-  // ================================================================
-  // ZONA DE EVIDENCIA: arma la galería sola a partir de los nombres
-  // de archivo. Poné tus fotos y videos dentro de una carpeta llamada
-  // "media" (al lado de este index.html) usando el mismo nombre que
-  // tienen del celular (IMG-20260817-WA0018.jpg, etc). La página
-  // prueba cada foto entre la WA0018 y la WA0136: la que exista, la
-  // muestra; la que no exista, simplemente no aparece (no rompe nada).
-  // Si sacás fotos con otra fecha o numeración, agregá ese nombre
-  // directo en la lista "candidatosVideos" o copiá el patrón del for.
-  // ================================================================
+  // ZONA DE EVIDENCIA: muestra exactamente los archivos detectados por actualizar-media.cmd.
   try{
-    const grid = document.getElementById('evidenciaGrid');
-    const btnCargarMas = document.getElementById('btnCargarMas');
+    const grid=document.getElementById('evidenciaGrid');
+    const btnCargarMas=document.getElementById('btnCargarMas');
+    const archivos=Array.isArray(window.MEDIA_FILES)?window.MEDIA_FILES:[];
     if(grid){
-      const candidatosFotos = [];
-      for(let n = 18; n <= 136; n++){
-        candidatosFotos.push('IMG-20260817-WA' + String(n).padStart(4,'0') + '.jpg');
+      archivos.forEach((archivo,i)=>{
+        const div=document.createElement('div');
+        div.className='evidencia-item'+(i>=8?' oculto':'');
+        if(/\.(jpe?g|png|webp|gif)$/i.test(archivo)){
+          const img=document.createElement('img');
+          img.src='media/'+encodeURIComponent(archivo);
+          img.alt='Jornada de Plantando Semillas';
+          img.loading='lazy';
+          div.appendChild(img);
+        }else if(/\.(mp4|webm|mov)$/i.test(archivo)){
+          const video=document.createElement('video');
+          video.src='media/'+encodeURIComponent(archivo);
+          video.controls=true;
+          video.preload='metadata';
+          const marca=document.createElement('span');
+          marca.className='marca-video';
+          marca.innerHTML='<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+          div.append(video,marca);
+        }
+        if(div.children.length) grid.appendChild(div);
+      });
+      const mostrables=grid.querySelectorAll('.evidencia-item').length;
+      if(mostrables<=8&&btnCargarMas) btnCargarMas.style.display='none';
+      if(mostrables===0){
+        grid.innerHTML='<p style="grid-column:1/-1;text-align:center;opacity:0.6;padding:20px 0;">No hay fotos ni videos detectados en la carpeta media.</p>';
+        if(btnCargarMas) btnCargarMas.style.display='none';
       }
-      const candidatosVideos = ['0003','0004','0005','0009'].map(n => 'VID-20260818-WA' + n + '.mp4');
-
-      function existeImagen(archivo){
-        return new Promise(resolve => {
-          const img = new Image();
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(false);
-          img.src = 'media/' + archivo;
-        });
-      }
-
-      Promise.all(candidatosFotos.map(archivo => existeImagen(archivo).then(existe => existe ? { tipo:'foto', archivo } : null)))
-        .then(resultados => {
-          const fotosValidas = resultados.filter(Boolean);
-          const videos = candidatosVideos.map(archivo => ({ tipo:'video', archivo }));
-          const items = [...fotosValidas, ...videos];
-
-          items.forEach((item, i) => {
-            const div = document.createElement('div');
-            div.className = 'evidencia-item' + (i >= 8 ? ' oculto' : '');
-            if(item.tipo === 'foto'){
-              const img = document.createElement('img');
-              img.src = 'media/' + item.archivo;
-              img.alt = 'Jornada de Plantando Semillas';
-              img.loading = 'lazy';
-              div.appendChild(img);
-            } else {
-              const video = document.createElement('video');
-              video.src = 'media/' + item.archivo;
-              video.controls = true;
-              video.preload = 'metadata';
-              video.onerror = () => div.remove();
-              const marca = document.createElement('span');
-              marca.className = 'marca-video';
-              marca.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
-              div.appendChild(video);
-              div.appendChild(marca);
-            }
-            grid.appendChild(div);
-          });
-
-          if(items.length <= 8 && btnCargarMas) btnCargarMas.style.display = 'none';
-          if(items.length === 0){
-            grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:0.6;padding:20px 0;">Todavía no hay fotos en la carpeta "media". Agregalas ahí con su nombre original.</p>';
-            if(btnCargarMas) btnCargarMas.style.display = 'none';
-          }
-        })
-        .catch(err => console.error('Error revisando las fotos de evidencia:', err));
-
       if(btnCargarMas){
-        btnCargarMas.addEventListener('click', () => {
-          const ocultos = document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto');
-          ocultos.forEach((item, i) => { if(i < 8) item.classList.remove('oculto'); });
-          if(document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto').length === 0){
-            btnCargarMas.style.display = 'none';
-          }
+        btnCargarMas.addEventListener('click',()=>{
+          const ocultos=document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto');
+          ocultos.forEach((item,i)=>{if(i<8)item.classList.remove('oculto');});
+          if(document.querySelectorAll('#evidenciaGrid .evidencia-item.oculto').length===0) btnCargarMas.style.display='none';
         });
       }
     }
