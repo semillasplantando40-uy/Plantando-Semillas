@@ -1462,8 +1462,11 @@
   </div>
 </footer>
 
-<script src="media-list.js"></script>
 <script>
+  // Archivos reales proporcionados para /media. No se escanean ni se prueban nombres.
+  const MEDIA_FILES = ["IMG-20260817-WA0018.jpg", "IMG-20260817-WA0020.jpg", "IMG-20260817-WA0026.jpg", "IMG-20260817-WA0032.jpg", "IMG-20260817-WA0035.jpg", "IMG-20260817-WA0036.jpg", "IMG-20260817-WA0037.jpg", "IMG-20260817-WA0038.jpg", "IMG-20260817-WA0039.jpg", "IMG-20260817-WA0040.jpg", "IMG-20260817-WA0042.jpg", "IMG-20260817-WA0043.jpg", "IMG-20260817-WA0044.jpg", "IMG-20260817-WA0045.jpg", "IMG-20260817-WA0046.jpg", "IMG-20260817-WA0052.jpg", "IMG-20260817-WA0056.jpg", "IMG-20260817-WA0058.jpg", "IMG-20260817-WA0060.jpg", "IMG-20260817-WA0062.jpg", "IMG-20260817-WA0066.jpg", "IMG-20260817-WA0068.jpg", "IMG-20260817-WA0071.jpg", "IMG-20260817-WA0081.jpg", "IMG-20260817-WA0085.jpg", "IMG-20260817-WA0096.jpg", "IMG-20260817-WA0107.jpg", "IMG-20260817-WA0109.jpg", "IMG-20260817-WA0115.jpg", "IMG-20260817-WA0118.jpg", "IMG-20260817-WA0130.jpg", "IMG-20260817-WA0134.jpg", "IMG-20260817-WA0135.jpg", "IMG-20260817-WA0136.jpg", "VID-20260818-WA0003.mp4", "VID-20260818-WA0004.mp4", "VID-20260818-WA0005.mp4", "VID-20260818-WA0009.mp4"];
+  window.MEDIA_FILES = MEDIA_FILES;
+
   // menu movil
   try{
     const btnMenu = document.getElementById('btnMenu');
@@ -1480,7 +1483,7 @@
     }
   }catch(err){ console.error('Error en el menú móvil:', err); }
 
-  // carrusel: usa solamente archivos que actualizar-media.cmd detectó en /media
+  // carrusel: usa solamente los archivos reales declarados arriba
   try{
     const pista = document.getElementById('pista');
     const carrusel = document.getElementById('carrusel');
@@ -1541,11 +1544,11 @@
       carrusel.addEventListener('focusout',iniciarAuto);
       iniciarAuto();
     } else if(pista){
-      pista.innerHTML='<div class="slide"><div class="slide-contenido"><h3>No hay fotos cargadas todavía</h3><p>Copiá tus fotos en la carpeta media, ejecutá actualizar-media.cmd y volvé a abrir la web.</p></div></div>';
+      pista.innerHTML='<div class="slide"><div class="slide-contenido"><h3>No hay fotos cargadas todavía</h3><p>Copiá los archivos de esta lista dentro de la carpeta media y volvé a abrir la web.</p></div></div>';
     }
   }catch(err){ console.error('Error en el carrusel:', err); }
 
-  // ZONA DE EVIDENCIA: muestra exactamente los archivos detectados por actualizar-media.cmd.
+  // ZONA DE EVIDENCIA: muestra exactamente los archivos declarados arriba.
   try{
     const grid=document.getElementById('evidenciaGrid');
     const btnCargarMas=document.getElementById('btnCargarMas');
